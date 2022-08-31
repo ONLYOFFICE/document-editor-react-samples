@@ -3,6 +3,7 @@ import AsyncSelect from "react-select/async";
 import { SingleValue } from "react-select/dist/declarations/src/types";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { DocumentEditor } from "@onlyoffice/document-editor-react";
+import config from "./../config/config.json";
 
 interface OptionType {
   label: string;
@@ -36,7 +37,7 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
   const loadOptions = async () => {
     try {
       const res = await fetch(
-        "https://cmsoforms.onlyoffice.com/api/oforms?populate=*&locale=all"
+        config.oformsUrl
       );
       const jData = await res.json();
 
@@ -94,7 +95,7 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
                   : "demo.oform",
                 url: selectedOption1
                   ? selectedOption1.value
-                  : "https://d2nlctn12v279m.cloudfront.net/assets/docs/samples/demo.oform",
+                  : config.demoStorage + "demo.oform",
             },
             documentType: "word",
         }}
@@ -107,5 +108,5 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
 export const FormsTemplate = Template.bind({});
 FormsTemplate.storyName = "Forms";
 FormsTemplate.args = {
-    documentserverUrl: "http://192.168.1.102:8095/",
+    documentserverUrl: config.documentserverUrl,
 };

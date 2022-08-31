@@ -3,6 +3,7 @@ import Select from "react-select";
 import { SingleValue } from "react-select/dist/declarations/src/types";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { DocumentEditor } from "@onlyoffice/document-editor-react";
+import config from "./../config/config.json";
 
 interface Person {
   label: string;
@@ -103,7 +104,7 @@ const Template: ComponentStory<any> = (args) => {
             document: {
                 fileType: "oform",
                 title: "demo.oform",
-                url: "https://kim.teamlab.info/example/download?fileName=sample.oform",
+                url: config.demoStorage + "withtags.oform",
             },
             documentType: "word",
         }}
@@ -118,7 +119,7 @@ export const FillingFormTemplate = Template.bind({});
 FillingFormTemplate.storyName = "Filling form";
 FillingFormTemplate.args = {
   DocumentEditor: {
-    documentserverUrl: "http://192.168.1.102:8095/",
+    documentserverUrl: config.documentserverUrl,
   },
   selector: {
     persons: [

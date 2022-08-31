@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Comments from "./components/Comments/Comments";
 import { DocumentEditor } from "@onlyoffice/document-editor-react";
+import config from "./../config/config.json";
 
 export default {
     title: "Sample/Comments",
@@ -40,18 +41,17 @@ const Template: ComponentStory<any> = (args) => {
         <Comments {...args.comment} userName={args.comment.userName} comments={comments} setComments={setComments} connector={connector} />
         <DocumentEditor {...args.editor}
           id="docxForComments"
-          documentserverUrl="http://192.168.1.102:8095/"
+          documentserverUrl={args.editor.documentserverUrl}
           config={{
             document: {
                 fileType: "docx",
                 title: "demo.docx",
-                url: "https://d2nlctn12v279m.cloudfront.net/assets/docs/samples/demo.docx",
+                url: config.demoStorage + "demo.docx",
             },
             documentType: "word",
             editorConfig: {
                 mode: "edit",
                 user: {
-                    id: "uid-1",
                     name: "John Smith",
                 },
             },
@@ -71,6 +71,6 @@ CommentsTemplate.args = {
       userName: "John Smith"
     },
     editor: {
-      documentserverUrl: "http://192.168.1.102:8095/"
+      documentserverUrl: config.documentserverUrl
     }
 };

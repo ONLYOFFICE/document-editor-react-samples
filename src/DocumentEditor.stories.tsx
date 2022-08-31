@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
 import { DocumentEditor } from "@onlyoffice/document-editor-react";
+import config from "./../config/config.json";
 
 export default {
     title: "DocumentEditor",
@@ -44,12 +44,12 @@ export const FormTemplate = Template.bind({});
 FormTemplate.storyName = "Form";
 FormTemplate.args = {
     id: "oformEditor",
-    documentserverUrl: "http://192.168.1.102:8095/",
+    documentserverUrl: config.documentserverUrl,
     config: {
         document: {
             fileType: "oform",
             title: "demo.oform",
-            url: "https://d2nlctn12v279m.cloudfront.net/assets/docs/samples/demo.oform",
+            url: config.demoStorage + "demo.oform",
         },
         documentType: "word",
     },
@@ -59,12 +59,12 @@ export const DocumentTemplate = Template.bind({});
 DocumentTemplate.storyName = "Document";
 DocumentTemplate.args = {
     id: "docxEditor",
-    documentserverUrl: "http://192.168.1.102:8095/",
+    documentserverUrl: config.documentserverUrl,
     config: {
         document: {
             fileType: "docx",
             title: "demo.docx",
-            url: "https://d2nlctn12v279m.cloudfront.net/assets/docs/samples/demo.docx",
+            url: config.demoStorage + "demo.docx",
         },
         documentType: "word",
     },
@@ -74,12 +74,12 @@ export const SpreadsheetTemplate = Template.bind({});
 SpreadsheetTemplate.storyName = "Spreadsheet";
 SpreadsheetTemplate.args = {
     id: "xlsxEditor",
-    documentserverUrl: "http://192.168.1.102:8095/",
+    documentserverUrl: config.documentserverUrl,
     config: {
         document: {
             fileType: "xlsx",
             title: "demo.xlsx",
-            url: "https://d2nlctn12v279m.cloudfront.net/assets/docs/samples/demo.xlsx",
+            url: config.demoStorage + "demo.xlsx",
         },
         documentType: "cell",
     },
@@ -89,12 +89,12 @@ export const PresentationTemplate = Template.bind({});
 PresentationTemplate.storyName = "Presentation";
 PresentationTemplate.args = {
     id: "pptxEditor",
-    documentserverUrl: "http://192.168.1.102:8095/",
+    documentserverUrl: config.documentserverUrl,
     config: {
         document: {
             fileType: "pptx",
             title: "demo.pptx",
-            url: "https://d2nlctn12v279m.cloudfront.net/assets/docs/samples/demo.pptx",
+            url: config.demoStorage + "demo.pptx",
         },
         documentType: "slide",
     },
