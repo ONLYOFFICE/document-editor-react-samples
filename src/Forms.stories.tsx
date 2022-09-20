@@ -11,7 +11,7 @@ interface OptionType {
 }
 
 export default {
-    title: "Sample/Forms",
+    title: "Samples/Form templates",
     component: DocumentEditor,
     parameters: {},
     decorators: [
@@ -106,7 +106,7 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
 }
 
 export const FormsTemplate = Template.bind({});
-FormsTemplate.storyName = "Forms";
+FormsTemplate.storyName = "Form templates";
 FormsTemplate.args = {
     documentserverUrl: config.documentserverUrl,
 };

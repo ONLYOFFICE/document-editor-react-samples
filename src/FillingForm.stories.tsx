@@ -15,7 +15,7 @@ interface Person {
 }
 
 export default {
-    title: "Sample/Filling form",
+    title: "Samples/Work with forms",
     component: DocumentEditor,
     parameters: {},
     decorators: [
@@ -116,7 +116,7 @@ const Template: ComponentStory<any> = (args) => {
 }
 
 export const FillingFormTemplate = Template.bind({});
-FillingFormTemplate.storyName = "Filling form";
+FillingFormTemplate.storyName = "Work with forms";
 FillingFormTemplate.args = {
   DocumentEditor: {
     documentserverUrl: config.documentserverUrl,

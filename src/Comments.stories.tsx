@@ -5,7 +5,7 @@ import { DocumentEditor } from "@onlyoffice/document-editor-react";
 import config from "./../config/config.json";
 
 export default {
-    title: "Sample/Comments",
+    title: "Samples/Work with comments",
     component: Comments,
     parameters: {},
     decorators: [
@@ -64,7 +64,7 @@ const Template: ComponentStory<any> = (args) => {
   )}
 
 export const CommentsTemplate = Template.bind({});
-CommentsTemplate.storyName = "Comments";
+CommentsTemplate.storyName = "Work with comments";
 CommentsTemplate.args = {
     comment: {
       editorId: "docxForComments",
