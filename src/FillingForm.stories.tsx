@@ -4,6 +4,7 @@ import { SingleValue } from "react-select/dist/declarations/src/types";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { DocumentEditor } from "@onlyoffice/document-editor-react";
 import config from "./../config/config.json";
+import ContentControls from "./components/ContentControls/ContentControls";
 
 interface Person {
   label: string;
@@ -38,12 +39,16 @@ const Template: ComponentStory<any> = (args) => {
     SingleValue<Person>
   >(null);
 
+  const [contentControls, setContentControls] = useState<any[]>([]);
+
   const handleSelect = (option: SingleValue<Person>) => {
     setSelectedPerson(option);
 
     setFormValue("FirstName", option?.value?.firstname || "");
     setFormValue("LastName", option?.value?.lastname || "");
     setFormValue("Birthday", option?.value?.birthday || "");
+
+    getAllContentControls();
   };
 
   const connectorRef = useRef<any>();
@@ -56,6 +61,7 @@ const Template: ComponentStory<any> = (args) => {
       connectorRef.current = connector;
       connector.connect();
 
+      getAllContentControls();
       connector.attachEvent("onBlurContentControl", onBlurContentControl);
     } catch (err) {
       console.error(err);
@@ -76,6 +82,19 @@ const Template: ComponentStory<any> = (args) => {
     );
   };
 
+  const getAllContentControls = () => {
+    connectorRef.current.executeMethod ("GetAllContentControls", null, function(data: any) {
+      for (let i = 0; i < data.length; i++) {
+        connectorRef.current.executeMethod("GetFormValue", [data[i].InternalId], (value: any) => {
+            data[i].Value = value ? value : "";
+            if (data.length - 1 == i) {
+              setContentControls(data);
+            }
+        });
+      }
+    });
+  }
+
   const onBlurContentControl = (oPr: { Tag?: string; InternalId?: string }) => {
     let sTag = oPr!["Tag"];
     const sensTags = [
@@ -87,6 +106,8 @@ const Template: ComponentStory<any> = (args) => {
     if (sensTags.indexOf(sTag || "") !== -1) {
       setSelectedPerson({ label: "Custom data" });
     }
+
+    getAllContentControls();
   };
 
   console.log({args})
@@ -98,13 +119,17 @@ const Template: ComponentStory<any> = (args) => {
         options={args.selector.persons}
         />
       <br />
+
+      <ContentControls contentControls={contentControls} setFormValue={setFormValue} />
+
       <DocumentEditor {...args.DocumentEditor}
         id="oformEditor"
         config={{
             document: {
                 fileType: "oform",
                 title: "demo.oform",
-                url: config.demoStorage + "withtags.oform",
+                url: "http://192.168.0.169:8090/plugins/servlet/onlyoffice/file-provider?vkey\u003dMjBlMDAyMTBkY2I1NzAzNWJlZDQ2NmM4ZmUxMzdiYTQwM2VjMzVjZjEyZmFkZjNlYzZlOThjODNjZDE3ZDgzNj8yOTE2MzUz",
+                key: "-646481879_embedded"
             },
             documentType: "word",
         }}
