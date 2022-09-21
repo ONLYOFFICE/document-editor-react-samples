@@ -128,11 +128,12 @@ const Template: ComponentStory<any> = (args) => {
             document: {
                 fileType: "oform",
                 title: "demo.oform",
-                url: "http://192.168.0.169:8090/plugins/servlet/onlyoffice/file-provider?vkey\u003dMjBlMDAyMTBkY2I1NzAzNWJlZDQ2NmM4ZmUxMzdiYTQwM2VjMzVjZjEyZmFkZjNlYzZlOThjODNjZDE3ZDgzNj8yOTE2MzUz",
-                key: "-646481879_embedded"
+                url: "http://192.168.0.169:8090/plugins/servlet/onlyoffice/file-provider?vkey\u003dNGQwZWZhNWNmNDQwYTRiYWFjYzI0NTYyMDQ3Yzc4YTIxOTU0YjBjYzI4ZTgxZjRmN2RlMTBkMzdiYjE2NDljMT8zMDQ3NDQ0",
+                key: "-1058610959_embedded"
             },
             documentType: "word",
         }}
+        width="75%"
         height="500px"
         events_onDocumentReady={onDocumentReady}
         />
