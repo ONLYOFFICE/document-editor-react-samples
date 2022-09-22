@@ -5,14 +5,23 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { DocumentEditor } from "@onlyoffice/document-editor-react";
 import config from "./../config/config.json";
 import ContentControls from "./components/ContentControls/ContentControls";
+import persons from "./data/persons.json";
 
 interface Person {
   label: string;
-  value?: {
-    firstname: string;
-    lastname: string;
-    birthday: string;
-  };
+  value?: any;
+}
+
+function getPersonsOptions(){
+  let personsOptions = [];
+  for(let i = 0; i < persons.length; i++) {
+    personsOptions[i] = {
+      label: persons[i].FirstName +" "+ persons[i].LastName,
+      value: persons[i]
+    }
+  }
+
+  return personsOptions;
 }
 
 export default {
@@ -41,13 +50,18 @@ const Template: ComponentStory<any> = (args) => {
 
   const [contentControls, setContentControls] = useState<any[]>([]);
 
-  const handleSelect = (option: SingleValue<Person>) => {
+  const handleSelect = (option: any) => {
     setSelectedPerson(option);
 
-    setFormValue("FirstName", option?.value?.firstname || "");
-    setFormValue("LastName", option?.value?.lastname || "");
-    setFormValue("Birthday", option?.value?.birthday || "");
+    for (var [key, value] of Object.entries<string>(option.value)) {
+      if (key == "Sex") {
+        key = value == "Male" ? "Male" : "Female";
+        value = "true";
+      }
 
+      setFormValue(key, value || "");
+    }
+  
     getAllContentControls();
   };
 
@@ -85,6 +99,19 @@ const Template: ComponentStory<any> = (args) => {
   const getAllContentControls = () => {
     connectorRef.current.executeMethod ("GetAllContentControls", null, function(data: any) {
       for (let i = 0; i < data.length; i++) {
+        switch (data[i].Tag) {
+          case "Male":
+            data[i].GroupKey = "Sex";
+            data[i].Type = "radio";
+            break;
+          case "Female":
+            data[i].GroupKey = "Sex";
+            data[i].Type = "radio";
+            break;
+          default:
+            data[i].Type = "input";
+        }
+
         connectorRef.current.executeMethod("GetFormValue", [data[i].InternalId], (value: any) => {
             data[i].Value = value ? value : "";
             if (data.length - 1 == i) {
@@ -148,23 +175,6 @@ FillingFormTemplate.args = {
     documentserverUrl: config.documentserverUrl,
   },
   selector: {
-    persons: [
-      {
-        label:"John Smith",
-        value: { 
-          firstname: "John",
-          lastname: "Smith",
-          birthday: "07081988"
-        }
-      },
-      {
-        label: "Kate Cage",
-        value: { 
-          firstname: "Kate",
-          lastname: "Cage",
-          birthday: "13011988"
-        }
-      }
-    ]
+    persons: getPersonsOptions()
   }
 };
