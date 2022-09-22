@@ -9,12 +9,22 @@
   margin: 5px;
 }
 
+.radioControl {
+  text-align: left;
+  display: inline-block;
+  width: 193px;
+}
+
 label {
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
   display: inline-block;
   padding-right: 10px;
+}
+
+.radioLabel {
+  padding-left: 5px;
 }
 
 input {
