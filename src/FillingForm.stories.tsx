@@ -155,8 +155,7 @@ const Template: ComponentStory<any> = (args) => {
             document: {
                 fileType: "oform",
                 title: "demo.oform",
-                url: "http://192.168.0.169:8090/plugins/servlet/onlyoffice/file-provider?vkey\u003dNGQwZWZhNWNmNDQwYTRiYWFjYzI0NTYyMDQ3Yzc4YTIxOTU0YjBjYzI4ZTgxZjRmN2RlMTBkMzdiYjE2NDljMT8zMDQ3NDQ0",
-                key: "-1058610959_embedded"
+                url: config.demoStorage + "withtags.docx",
             },
             documentType: "word",
         }}
