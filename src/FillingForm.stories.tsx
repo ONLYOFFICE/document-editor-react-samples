@@ -76,7 +76,7 @@ const Template: ComponentStory<any> = (args) => {
       connector.connect();
 
       getAllContentControls();
-      connector.attachEvent("onBlurContentControl", onBlurContentControl);
+      connector.attachEvent("onChangeContentControl", onBlurContentControl);
     } catch (err) {
       console.error(err);
     }
@@ -159,8 +159,8 @@ const Template: ComponentStory<any> = (args) => {
             },
             documentType: "word",
         }}
-        width="75%"
-        height="500px"
+        width="70%"
+        height="700px"
         events_onDocumentReady={onDocumentReady}
         />
     </div>
