@@ -155,7 +155,7 @@ const Template: ComponentStory<any> = (args) => {
             document: {
                 fileType: "oform",
                 title: "demo.oform",
-                url: config.demoStorage + "withtags.docx",
+                url: config.demoStorage + "withtags.oform",
             },
             documentType: "word",
         }}
