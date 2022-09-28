@@ -41,7 +41,7 @@ const RadioControl = (props: RadioControlProps) => {
       <label>{label}</label>
       <div className="radioControl">
         {options.map((option) =>
-          <span>
+          <span key={option.Tag}>
             <input type="radio" id={option.Tag} checked={checkedOptionState == option.Tag} onChange={onRadioControl}/>
             <label className="radioLabel">{option.Tag.replace(/([a-z])([A-Z])/g, '$1 $2')}</label>
           </span>

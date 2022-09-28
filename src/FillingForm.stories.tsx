@@ -123,21 +123,11 @@ const Template: ComponentStory<any> = (args) => {
   }
 
   const onBlurContentControl = (oPr: { Tag?: string; InternalId?: string }) => {
-    let sTag = oPr!["Tag"];
-    const sensTags = [
-      "FirstName",
-      "LastName",
-      "Birthday"
-    ];
-
-    if (sensTags.indexOf(sTag || "") !== -1) {
-      setSelectedPerson({ label: "Custom data" });
-    }
+    setSelectedPerson({ label: "Custom data" });
 
     getAllContentControls();
   };
 
-  console.log({args})
   return (
     <div>
       <Select

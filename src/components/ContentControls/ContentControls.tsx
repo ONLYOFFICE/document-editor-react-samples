@@ -13,7 +13,12 @@ const ContentControls = (props: ContentControlsProps) => {
     setFormValue,
   } = props;
 
-  let groupsRadioControls: any[] = contentControls.filter(contentControl => contentControl.Tag != "" && contentControl.Type == "radio").reduce((r, a) => {
+  let copyContentControls: any[] = [];
+  for (var i = 0; i < contentControls.length; i++) {
+    copyContentControls[i] = {...contentControls[i]};
+  }
+
+  let groupsRadioControls: any[] = copyContentControls.filter(contentControl => contentControl.Tag != "" && contentControl.Type == "radio").reduce((r, a) => {
     r[a.GroupKey] = r[a.GroupKey] || [];
     r[a.GroupKey].push({Tag: a.Tag, checked: a.Value});
     return r;
@@ -23,19 +28,19 @@ const ContentControls = (props: ContentControlsProps) => {
     let index = [];
     let first = true;
 
-    for (var i = 0; i < contentControls.length; i++) {
-      if (contentControls[i].GroupKey && contentControls[i].GroupKey == key) {
+    for (var i = 0; i < copyContentControls.length; i++) {
+      if (copyContentControls[i].GroupKey && copyContentControls[i].GroupKey == key) {
         index.push(i);
       } 
     }
 
     for (var i = 0; i < index.length; i++) {
       if (first) {
-        contentControls[index[i]].Tag = key;
-        contentControls[index[i]].Value = value;
+        copyContentControls[index[i]].Tag = key;
+        copyContentControls[index[i]].Value = value;
         first = false;
       } else {
-        contentControls.splice(index[i], 1);
+        copyContentControls.splice(index[i], 1);
       }
     }
   }
@@ -63,7 +68,7 @@ const ContentControls = (props: ContentControlsProps) => {
 
   return (
     <div className="controlBlock">
-      {contentControls.filter(contentControl => contentControl.Tag != "").map((contentControl) => getComponent(contentControl))}
+      {copyContentControls.filter(contentControl => contentControl.Tag != "").map((contentControl) => getComponent(contentControl))}
     </div>
   );
 
