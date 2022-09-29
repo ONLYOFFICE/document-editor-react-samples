@@ -76,7 +76,7 @@ const Template: ComponentStory<any> = (args) => {
       connector.connect();
 
       getAllContentControls();
-      connector.attachEvent("onChangeContentControl", onBlurContentControl);
+      connector.attachEvent("onChangeContentControl", onChangeContentControl);
     } catch (err) {
       console.error(err);
     }
@@ -122,9 +122,7 @@ const Template: ComponentStory<any> = (args) => {
     });
   }
 
-  const onBlurContentControl = (oPr: { Tag?: string; InternalId?: string }) => {
-    setSelectedPerson({ label: "Custom data" });
-
+  const onChangeContentControl = (oPr: { Tag?: string; InternalId?: string }) => {
     getAllContentControls();
   };
 

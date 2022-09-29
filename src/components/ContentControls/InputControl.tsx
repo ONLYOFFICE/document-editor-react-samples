@@ -4,7 +4,7 @@ import "./ContentControls.css";
 type InputControlProps = {
   id: string;
   value: string;
-  label: string
+  label: string;
   setFormValue: (id: string, value: string) => void;
 };
 
