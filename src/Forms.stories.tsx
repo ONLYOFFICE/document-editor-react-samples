@@ -20,13 +20,7 @@ export default {
                 <Story />
             </div>
         ),
-    ],
-    argTypes: {
-        events_onAppReady: { action: 'onAppReady' },
-        events_onDocumentReady: { action: 'onDocumentReady' },
-        events_onDocumentStateChange: { action: 'onDocumentStateChange' },
-        events_onError: { action: 'onError' }
-    },
+    ]
 } as ComponentMeta<typeof DocumentEditor>;
 
 const Template: ComponentStory<typeof DocumentEditor> = (args) => {
