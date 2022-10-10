@@ -4,13 +4,15 @@ import RadioControl from "./RadioControl";
 
 type ContentControlsProps = {
   contentControls: any[];
-  setFormValue: (id: string, value: string) => void;
+  setSelectedOption: any;
+  connector: any;
 };
 
 const ContentControls = (props: ContentControlsProps) => {
   const {
     contentControls,
-    setFormValue,
+    setSelectedOption,
+    connector,
   } = props;
 
   let copyContentControls: any[] = [];
@@ -49,11 +51,12 @@ const ContentControls = (props: ContentControlsProps) => {
     switch (contentControl.Type) {
       case "input":
         return <InputControl
-            key={contentControl.InternalId}
-            id={contentControl.Tag}
-            label={contentControl.Tag.replace(/([a-z])([A-Z])/g, '$1 $2')}
-            value={contentControl.Value}
-            setFormValue={setFormValue}
+          key={contentControl.InternalId}
+          id={contentControl.Tag}
+          label={contentControl.Tag.replace(/([a-z])([A-Z])/g, '$1 $2')}
+          value={contentControl.Value}
+          setSelectedOption={setSelectedOption}
+          connector={connector}
             />
       case "radio": 
         return <RadioControl
@@ -61,7 +64,8 @@ const ContentControls = (props: ContentControlsProps) => {
           id={contentControl.Tag}
           label={contentControl.Tag.replace(/([a-z])([A-Z])/g, '$1 $2')}
           options={contentControl.Value}
-          setFormValue={setFormValue}
+          setSelectedOption={setSelectedOption}
+          connector={connector}
         />
     }
   }

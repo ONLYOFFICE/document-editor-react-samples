@@ -5,7 +5,8 @@ type RadioControlProps = {
   id: string;
   label: string;
   options: any [];
-  setFormValue: (id: string, value: string) => void;
+  setSelectedOption: any;
+  connector: any;
 };
 
 const RadioControl = (props: RadioControlProps) => {
@@ -13,7 +14,8 @@ const RadioControl = (props: RadioControlProps) => {
     id,
     label,
     options,
-    setFormValue,
+    setSelectedOption,
+    connector,
   } = props;
 
   let checkedOption = "";
@@ -31,9 +33,23 @@ const RadioControl = (props: RadioControlProps) => {
   }, [ options ]);
 
   const onRadioControl = (event: any) => {
-    console.log(event);
     setCheckedOptionState(event.target.id);
     setFormValue(event.target.id, "true");
+    setSelectedOption({label: "Custom Data"});
+  };
+
+  const setFormValue = (formId: string, value: string) => {
+    connector.current.executeMethod(
+      "GetFormsByTag",
+      [formId],
+      (forms: any) => {
+        connector.current.executeMethod(
+          "SetFormValue",
+          [forms[0]["InternalId"], value],
+          null
+        );
+      }
+    );
   };
 
   return (

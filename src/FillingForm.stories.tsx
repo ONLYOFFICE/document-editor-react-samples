@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
-import Select from "react-select";
 import { SingleValue } from "react-select/dist/declarations/src/types";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { DocumentEditor } from "@onlyoffice/document-editor-react";
 import config from "./../config/config.json";
+import SelectDataControl from "./components/ContentControls/SelectDataControl";
 import ContentControls from "./components/ContentControls/ContentControls";
 import persons from "./data/persons.json";
 
@@ -44,21 +44,6 @@ const Template: ComponentStory<any> = (args) => {
 
   const [contentControls, setContentControls] = useState<any[]>([]);
 
-  const handleSelect = (option: any) => {
-    setSelectedPerson(option);
-
-    for (var [key, value] of Object.entries<string>(option.value)) {
-      if (key == "Sex") {
-        key = value == "Male" ? "Male" : "Female";
-        value = "true";
-      }
-
-      setFormValue(key, value || "");
-    }
-  
-    getAllContentControls();
-  };
-
   const connectorRef = useRef<any>();
 
   const onDocumentReady = () => {
@@ -76,20 +61,6 @@ const Template: ComponentStory<any> = (args) => {
     } catch (err) {
       console.error(err);
     }
-  };
-
-  const setFormValue = (formId: string, value: string) => {
-    connectorRef.current.executeMethod(
-      "GetFormsByTag",
-      [formId],
-      (forms: any) => {
-        connectorRef.current.executeMethod(
-          "SetFormValue",
-          [forms[0]["InternalId"], value],
-          null
-        );
-      }
-    );
   };
 
   const getAllContentControls = () => {
@@ -122,20 +93,16 @@ const Template: ComponentStory<any> = (args) => {
     getAllContentControls();
   };
 
-  function onBlurContentControl(oPr: { Tag?: string; InternalId?: string }) {
-      setSelectedPerson({ label: "Custom Data" });
+  const onBlurContentControl = (oPr: { Tag?: string; InternalId?: string }) => {
+    setSelectedPerson({ label: "Custom Data" });
   };
 
   return (
     <div>
-      <Select
-        value={selectedPerson}
-        onChange={handleSelect}
-        options={args.selector.persons}
-        />
+      <SelectDataControl selectedOption={selectedPerson} setSelectedOption={setSelectedPerson} options={args.selector.persons} connector={connectorRef} />
       <br />
 
-      <ContentControls contentControls={contentControls} setFormValue={setFormValue} />
+      <ContentControls contentControls={contentControls} connector={connectorRef} setSelectedOption={setSelectedPerson}/>
 
       <DocumentEditor {...args.DocumentEditor}
         id="oformEditor"
