@@ -33,7 +33,7 @@ const Template: ComponentStory<any> = (args) => {
 
         <DocumentEditor {...args}
           id={args.id}
-          documentserverUrl={args.documentserverUrl}
+          documentServerUrl={args.documentServerUrl}
           config={{
               document: {
                   fileType: "docx",
@@ -59,5 +59,5 @@ export const CommentsTemplate = Template.bind({});
 CommentsTemplate.storyName = "Work with review";
 CommentsTemplate.args = {
     id: "docxForReview",
-    documentserverUrl: config.documentserverUrl
+    documentServerUrl: config.documentServerUrl
 };

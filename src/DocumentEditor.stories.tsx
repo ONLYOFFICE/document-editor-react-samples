@@ -59,7 +59,7 @@ export const FormTemplate = Template.bind({});
 FormTemplate.storyName = "Form";
 FormTemplate.args = {
     id: "oformEditor",
-    documentserverUrl: config.documentserverUrl,
+    documentServerUrl: config.documentServerUrl,
     config: {
         document: {
             fileType: "oform",
@@ -74,7 +74,7 @@ export const DocumentTemplate = Template.bind({});
 DocumentTemplate.storyName = "Document";
 DocumentTemplate.args = {
     id: "docxEditor",
-    documentserverUrl: config.documentserverUrl,
+    documentServerUrl: config.documentServerUrl,
     config: {
         document: {
             fileType: "docx",
@@ -89,7 +89,7 @@ export const SpreadsheetTemplate = Template.bind({});
 SpreadsheetTemplate.storyName = "Spreadsheet";
 SpreadsheetTemplate.args = {
     id: "xlsxEditor",
-    documentserverUrl: config.documentserverUrl,
+    documentServerUrl: config.documentServerUrl,
     config: {
         document: {
             fileType: "xlsx",
@@ -104,7 +104,7 @@ export const PresentationTemplate = Template.bind({});
 PresentationTemplate.storyName = "Presentation";
 PresentationTemplate.args = {
     id: "pptxEditor",
-    documentserverUrl: config.documentserverUrl,
+    documentServerUrl: config.documentServerUrl,
     config: {
         document: {
             fileType: "pptx",

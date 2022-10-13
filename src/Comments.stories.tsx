@@ -41,7 +41,7 @@ const Template: ComponentStory<any> = (args) => {
         <Comments {...args.comment} userName={args.comment.userName} comments={comments} setComments={setComments} connector={connector} />
         <DocumentEditor {...args.editor}
           id="docxForComments"
-          documentserverUrl={args.editor.documentserverUrl}
+          documentServerUrl={args.editor.documentServerUrl}
           config={{
             document: {
                 fileType: "docx",
@@ -71,6 +71,6 @@ CommentsTemplate.args = {
       userName: "John Smith"
     },
     editor: {
-      documentserverUrl: config.documentserverUrl
+      documentServerUrl: config.documentServerUrl
     }
 };

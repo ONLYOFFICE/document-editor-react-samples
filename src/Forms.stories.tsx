@@ -102,5 +102,5 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
 export const FormsTemplate = Template.bind({});
 FormsTemplate.storyName = "Form templates";
 FormsTemplate.args = {
-    documentserverUrl: config.documentserverUrl,
+    documentServerUrl: config.documentServerUrl,
 };

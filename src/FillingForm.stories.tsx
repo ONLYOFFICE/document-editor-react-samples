@@ -126,7 +126,7 @@ export const FillingFormTemplate = Template.bind({});
 FillingFormTemplate.storyName = "Work with forms";
 FillingFormTemplate.args = {
   DocumentEditor: {
-    documentserverUrl: config.documentserverUrl,
+    documentServerUrl: config.documentServerUrl,
   },
   selector: {
     persons: getPersonsOptions()
