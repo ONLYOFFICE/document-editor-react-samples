@@ -45,6 +45,7 @@ const Template: ComponentStory<any> = (args) => {
           config={{
             document: {
                 fileType: "docx",
+                key: "docx" + Math.random(),
                 title: "demo.docx",
                 url: config.demoStorage + "withcomments.docx",
             },

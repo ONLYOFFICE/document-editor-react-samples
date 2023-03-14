@@ -109,6 +109,7 @@ const Template: ComponentStory<any> = (args) => {
         config={{
             document: {
                 fileType: "oform",
+                key: "oform" + Math.random(),
                 title: "demo.oform",
                 url: config.demoStorage + "withtags.oform",
             },

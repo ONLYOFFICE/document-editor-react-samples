@@ -84,6 +84,7 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
         config={{
             document: {
                 fileType: "oform",
+                key: "oform" + Math.random(),
                 title: selectedOption1
                   ? selectedOption1.label
                   : "demo.oform",
