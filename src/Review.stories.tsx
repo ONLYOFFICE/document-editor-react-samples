@@ -37,7 +37,7 @@ const Template: ComponentStory<any> = (args) => {
           config={{
               document: {
                   fileType: "docx",
-                  key: "docx" + Math.random(),
+                  key: args.key,
                   title: "demo.docx",
                   url: config.demoStorage + "review.docx",
                   permissions: {
@@ -60,5 +60,6 @@ export const CommentsTemplate = Template.bind({});
 CommentsTemplate.storyName = "Work with review";
 CommentsTemplate.args = {
     id: "docxForReview",
-    documentServerUrl: config.documentServerUrl
+    documentServerUrl: config.documentServerUrl,
+    key: "docx" + Math.random()
 };

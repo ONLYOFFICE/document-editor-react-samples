@@ -45,7 +45,7 @@ const Template: ComponentStory<any> = (args) => {
           config={{
             document: {
                 fileType: "docx",
-                key: "docx" + Math.random(),
+                key: args.editor.key,
                 title: "demo.docx",
                 url: config.demoStorage + "withcomments.docx",
             },
@@ -72,6 +72,7 @@ CommentsTemplate.args = {
       userName: "John Smith"
     },
     editor: {
-      documentServerUrl: config.documentServerUrl
+      documentServerUrl: config.documentServerUrl,
+      key: "docx" + Math.random()
     }
 };

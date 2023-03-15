@@ -109,7 +109,7 @@ const Template: ComponentStory<any> = (args) => {
         config={{
             document: {
                 fileType: "oform",
-                key: "oform" + Math.random(),
+                key:  args.key,
                 title: "demo.oform",
                 url: config.demoStorage + "withtags.oform",
             },
@@ -127,8 +127,9 @@ export const FillingFormTemplate = Template.bind({});
 FillingFormTemplate.storyName = "Work with forms";
 FillingFormTemplate.args = {
   DocumentEditor: {
-    documentServerUrl: config.documentServerUrl,
+    documentServerUrl: config.documentServerUrl
   },
+  key: "oform" + Math.random(),
   selector: {
     persons: getPersonsOptions()
   }
