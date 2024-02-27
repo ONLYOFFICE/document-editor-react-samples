@@ -38,7 +38,7 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
       const fileOforms = jData.data.map(
         (item: { attributes: { file_oform: { data: any[] } } }) =>
           item.attributes.file_oform.data.find(
-            (f) => f.attributes.ext === ".oform"
+            (f) => f.attributes.ext === ".pdf"
           )
         );
       const options = fileOforms
@@ -80,17 +80,17 @@ const Template: ComponentStory<typeof DocumentEditor> = (args) => {
         />
 
       <DocumentEditor {...args}
-        id="oformEditor"
+        id="pdfEditor"
         config={{
             document: {
-                fileType: "oform",
-                key: "oform" + Math.random(),
+                fileType: "pdf",
+                key: "pdf" + Math.random(),
                 title: selectedOption1
                   ? selectedOption1.label
-                  : "demo.oform",
+                  : "oform.pdf",
                 url: selectedOption1
                   ? selectedOption1.value
-                  : config.demoStorage + "demo.oform",
+                  : config.demoStorage + "oform.pdf",
             },
             documentType: "word",
         }}

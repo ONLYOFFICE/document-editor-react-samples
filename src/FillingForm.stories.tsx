@@ -48,7 +48,7 @@ const Template: ComponentStory<any> = (args) => {
 
   const onDocumentReady = () => {
     try {
-      var editor = window.DocEditor.instances["oformEditor"];
+      var editor = window.DocEditor.instances["pdfEditor"];
       var connector = editor.createConnector();
 
       connectorRef.current = connector;
@@ -105,13 +105,13 @@ const Template: ComponentStory<any> = (args) => {
       <ContentControls contentControls={contentControls} connector={connectorRef} setSelectedOption={setSelectedPerson}/>
 
       <DocumentEditor {...args.DocumentEditor}
-        id="oformEditor"
+        id="pdfEditor"
         config={{
             document: {
-                fileType: "oform",
+                fileType: "pdf",
                 key:  args.key,
-                title: "demo.oform",
-                url: config.demoStorage + "withtags.oform",
+                title: "withtags.pdf",
+                url: config.demoStorage + "withtags.pdf",
             },
             documentType: "word",
         }}
@@ -129,7 +129,7 @@ FillingFormTemplate.args = {
   DocumentEditor: {
     documentServerUrl: config.documentServerUrl
   },
-  key: "oform" + Math.random(),
+  key: "pdf" + Math.random(),
   selector: {
     persons: getPersonsOptions()
   }
