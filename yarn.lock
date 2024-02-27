@@ -1953,10 +1953,10 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@onlyoffice/document-editor-react@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@onlyoffice/document-editor-react/-/document-editor-react-1.3.0.tgz#68db658a5405e03b1778296eb607e8aa93f1868a"
-  integrity sha512-TihZOkow+tCb87evJwecXzbQtmtIvnXURKGIp21zKWoFiwNivFsUiH7qIZeRM+LaWsIAIkfLEdIQiqFLqB60bw==
+"@onlyoffice/document-editor-react@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@onlyoffice/document-editor-react/-/document-editor-react-1.4.1.tgz#f9b83d86336360b0992ea4688080aa65f9a509dd"
+  integrity sha512-4Si8Xy0Eh9sH7WukIHJV3kcfkK6WJNK9eKgqTxW4Xz9MQBAh+z6svX2sUptL/Ezz3GuHbsBIEehxZ3PaJJ3Ikg==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.1", "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.10"
